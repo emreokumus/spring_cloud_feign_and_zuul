@@ -23,7 +23,7 @@ public class FeignController {
     //Fallback metod tanımladığımız zaman , fallback metodun ismi @HystrixCommand anotasyonu ile aynı olmalıdır.
     public ResponseEntity<String> defaultResponse() {
         System.out.println("You are seeing this fallback response because the underlying microservice is down.");
-        String err = "Fallback error as the microservice is down.";
-        return new ResponseEntity<String>(err, HttpStatus.INTERNAL_SERVER_ERROR);
+        String errorMessage = "Fallback error as the microservice is down.";
+        return new ResponseEntity<String>(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

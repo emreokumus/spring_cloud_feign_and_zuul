@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: spring-cloud-eureka-feign-client
+server:
+  port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+feign:
+  hystrix:
+    command:
+      default:
+        circuitBreaker:
+          sleepWindowInMilliseconds: 10000
+          errorThresholdPercentage: 100
+          requestVolumeThreshold: 5
+        metrics:
+          rollingStats:
+            timeInMilliseconds: 10000
+
+client:
+  config:
+    spring-cloud-eureka-client: #default yazarsam her servis için bu ayarı yapar.
+      connectTimeout: 5000 #Client bağlantısı için zaman aşımı süresi 5 sanıye
+      readTimeout: 5000
+      loggerLevel: basic

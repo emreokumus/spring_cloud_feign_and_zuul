@@ -1,7 +1,10 @@
 zuul:
   prefix: /api
+  ignoredPatterns: #bu pathleri disable ederiz. hepsini etmek içi '*' kullanmalıyız.
+    - /api/spring-cloud-eureka-feign-client/**
+    - /api/spring-cloud-eureka-client/**
   routes:
-    spring-cloud-eureka-feign-client:
+    spring:
       path: /feignclient/** #/api/ bu url'i kullanırız.
       serviceID: spring-cloud-eureka-feign-client
       stripPrefix: true #/api prefixini yönlendirdiğimiz servis path'ine ekleme demek.

@@ -1,6 +1,8 @@
 package com.emreokumus.eurekaclient.controller;
 
+import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Application;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,6 +24,13 @@ public class GreetingController {
 
     @RequestMapping("/greeting/{name}")
     public String greeting(@PathVariable("name") String name) {
-        return String.format("Hello from '%s' by '%s'!", eurekaClient.getApplication(appName).getName(),name);
+        Application application
+                = eurekaClient.getApplication("spring-cloud-eureka-client");
+        InstanceInfo instanceInfo = application.getInstances().get(0);
+        String appName = instanceInfo.getAppName();
+        String hostName = instanceInfo.getHostName();
+        int port = instanceInfo.getPort();
+        //return String.format("Hello from '%s' by '%s'!", eurekaClient.getApplication(appName).getName(),name);
+        return String.format("Hello from '%s' host: '%s' port:'%s' by '%s'!",appName,hostName,port,name);
     }
 }

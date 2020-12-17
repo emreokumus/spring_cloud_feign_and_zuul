@@ -2,7 +2,7 @@ spring:
   application:
     name: spring-cloud-eureka-client  #bu isimle register olur eureka server'a
 server:
-  port: 8081
+  port: 0 #rastgele musait bir portta çalışacak
 eureka:
   client:
     serviceUrl:

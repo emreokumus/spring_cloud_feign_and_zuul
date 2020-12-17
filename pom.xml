@@ -12,5 +12,6 @@
         <module>eurekaserver</module>
         <module>eurekaclient</module>
         <module>feignclient</module>
+        <module>zuulapigateway</module>
     </modules>
 </project>

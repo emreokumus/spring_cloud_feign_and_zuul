@@ -1,0 +1,7 @@
+zuul:
+  prefix: /api
+  routes:
+    spring-cloud-eureka-feign-client:
+      path: /feignclient/** #/api/ bu url'i kullanırız.
+      serviceID: spring-cloud-eureka-feign-client
+      stripPrefix: true #/api prefixini yönlendirdiğimiz servis path'ine ekleme demek.

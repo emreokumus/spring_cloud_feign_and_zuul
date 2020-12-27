@@ -1,6 +1,6 @@
 package com.emreokumus.feignclient.controller;
 
-import com.emreokumus.feignclient.config.IGreetingClient;
+import com.emreokumus.feignclient.config.GreetingClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FeignController {
 
     @Autowired
-    private IGreetingClient greetingClient;
+    private GreetingClient greetingClient;
 
     @HystrixCommand(fallbackMethod= "defaultResponse")
     @RequestMapping("/get-greeting")
